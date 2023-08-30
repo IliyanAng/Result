@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<LangVersion>10.0</LangVersion>
+		<Authors>Steve Smith (@ardalis); Iliyan Angelov (@IliyanAng)</Authors>
+		<PackageIcon>icon.png</PackageIcon>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Ardalis.Result\Ardalis.Result.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Azure.Functions.Worker"  />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http"  />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" />
+	</ItemGroup>
+
+
+</Project>
