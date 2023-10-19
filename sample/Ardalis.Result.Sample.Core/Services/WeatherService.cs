@@ -39,8 +39,8 @@ namespace Ardalis.Result.Sample.Core.Services
             // validate model
             if (model.PostalCode.Length > 10)
             {
-                return Result.Invalid(new List<ValidationError> {
-                    new ValidationError
+                return Result.Invalid(new List<ResultError> {
+                    new ResultError
                     {
                         Identifier = nameof(model.PostalCode),
                         ErrorMessage = _stringLocalizer["PostalCode cannot exceed 10 characters."].Value }
@@ -49,8 +49,8 @@ namespace Ardalis.Result.Sample.Core.Services
 
             if (string.IsNullOrWhiteSpace(model.PostalCode))
             {
-                return Result.Invalid(new List<ValidationError> {
-                    new ValidationError
+                return Result.Invalid(new List<ResultError> {
+                    new ResultError
                     {
                         Identifier = nameof(model.PostalCode),
                         ErrorMessage = "PostalCode is required" }
@@ -94,8 +94,8 @@ namespace Ardalis.Result.Sample.Core.Services
             // validate model
             if (model.PostalCode.Length > 10)
             {
-                return Result.Invalid(new List<ValidationError> {
-                    new ValidationError
+                return Result.Invalid(new List<ResultError> {
+                    new ResultError
                     {
                         Identifier = nameof(model.PostalCode),
                         ErrorMessage = _stringLocalizer["PostalCode cannot exceed 10 characters."].Value }

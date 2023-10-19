@@ -87,13 +87,13 @@ namespace Ardalis.Result.UnitTests
         [Fact]
         public void ShouldProduceInvalidWithValidationErrors()
         {
-            var validationErrors = new List<ValidationError>
+            var validationErrors = new List<Error>
             {
-                new ValidationError
+                new Error
                 {
                     ErrorMessage = "Validation Error 1"
                 },
-                new ValidationError
+                new Error
                 {
                     ErrorMessage = "Validation Error 2"
                 }
@@ -109,7 +109,7 @@ namespace Ardalis.Result.UnitTests
         [Fact]
         public void ShouldProduceInvalidWithoutValidationErrors()
         {
-            var validationErrors = new List<ValidationError>();
+            var validationErrors = new List<Error>();
             var result = Result<int>.Invalid(validationErrors);
 
             var actual = result.Map(val => val.ToString());

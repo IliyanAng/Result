@@ -52,7 +52,7 @@ namespace Ardalis.Result.UnitTests
         [Fact]
         public void ShouldProduceInvalidWithEmptyList()
         {
-            var result = Result.Invalid(new List<ValidationError>());
+            var result = Result.Invalid(new List<Error>());
 
             var actual = result.Map(_ => "This should be ignored");
 
@@ -63,7 +63,7 @@ namespace Ardalis.Result.UnitTests
         [Fact]
         public void ShouldProduceInvalid()
         {
-            var result = Result.Invalid(new ValidationError());
+            var result = Result.Invalid(new Error());
 
             var actual = result.Map(_ => "This should be ignored");
 

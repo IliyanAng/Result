@@ -1,17 +1,17 @@
 ﻿namespace Ardalis.Result
 {
-    public class ValidationError
+    public class ResultError
     {
-        public ValidationError()
+        public ResultError()
         {
         }
 
-        public ValidationError(string errorMessage)
+        public ResultError(string errorMessage)
         {
             ErrorMessage = errorMessage;
         }
 
-        public ValidationError(string identifier, string errorMessage, string errorCode, ValidationSeverity severity)
+        public ResultError(string identifier, string errorMessage, string errorCode, ValidationSeverity severity)
         {
             Identifier = identifier;
             ErrorMessage = errorMessage;
@@ -20,8 +20,9 @@
         }
 
         public string Identifier { get; set; }
-        public string ErrorMessage { get; set; }
+
         public string ErrorCode { get; set; }
-        public ValidationSeverity Severity { get; set; } = ValidationSeverity.Error;
+        public ValidationSeverity Severity { get; set; } = ValidationSeverity.Warning;
+        public string ErrorMessage { get; set; }
     }
 }

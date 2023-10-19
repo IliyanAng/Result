@@ -116,14 +116,14 @@ public class ResultConstructor
     [Fact]
     public void InitializesStatusToInvalidAndSetsErrorMessagesGivenInvalidFactoryCall()
     {
-        var validationErrors = new List<ValidationError>
+        var validationErrors = new List<Error>
             {
-                new ValidationError
+                new Error
                 {
                     Identifier = "name",
                     ErrorMessage = "Name is required"
                 },
-                new ValidationError
+                new Error
                 {
                     Identifier = "postalCode",
                     ErrorMessage = "PostalCode cannot exceed 10 characters"
@@ -133,8 +133,8 @@ public class ResultConstructor
         var result = Result<object>.Invalid(validationErrors);
 
         result.Status.Should().Be(ResultStatus.Invalid);
-        result.ValidationErrors.Should().ContainEquivalentOf(new ValidationError { ErrorMessage = "Name is required", Identifier = "name" });
-        result.ValidationErrors.Should().ContainEquivalentOf(new ValidationError { ErrorMessage = "PostalCode cannot exceed 10 characters", Identifier = "postalCode" });
+        result.ValidationErrors.Should().ContainEquivalentOf(new Error { ErrorMessage = "Name is required", Identifier = "name" });
+        result.ValidationErrors.Should().ContainEquivalentOf(new Error { ErrorMessage = "PostalCode cannot exceed 10 characters", Identifier = "postalCode" });
     }
 
     [Fact]
@@ -221,7 +221,7 @@ public class ResultConstructor
     [Fact]
     public void InitializedIsSuccessFalseForInvalidListFactoryCall()
     {
-        var result = Result<object>.Invalid(new List<ValidationError>());
+        var result = Result<object>.Invalid(new List<Error>());
 
         Assert.False(result.IsSuccess);
     }
@@ -229,7 +229,7 @@ public class ResultConstructor
     [Fact]
     public void InitializedIsSuccessFalseForInvalidFactoryCall()
     {
-        var result = Result<object>.Invalid(new ValidationError());
+        var result = Result<object>.Invalid(new Error());
 
         Assert.False(result.IsSuccess);
     }

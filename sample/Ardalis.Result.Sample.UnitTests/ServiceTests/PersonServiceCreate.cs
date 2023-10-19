@@ -1,6 +1,6 @@
-using System.Linq;
 using Ardalis.Result.Sample.Core.Services;
 using FluentAssertions;
+using System.Linq;
 using Xunit;
 
 namespace Ardalis.Result.Sample.UnitTests.ServiceTests;
@@ -24,6 +24,7 @@ public class PersonServiceCreate
         var service = new PersonService();
 
         var result = service.Create("Steve", "SomeLongName");
+
 
         result.Status.Should().Be(ResultStatus.Invalid);
         result.ValidationErrors.Count.Should().Be(2);

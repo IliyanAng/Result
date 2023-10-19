@@ -25,14 +25,14 @@ public class ResultVoidToResultOfT
     [Fact]
     public void ConvertFromInvalidResultOfUnitWithValidationErrorList()
     {
-        var validationErrors = new List<ValidationError>
+        var validationErrors = new List<Error>
             {
-                new ValidationError
+                new Error
                 {
                     Identifier = "name",
                     ErrorMessage = "Name is required"
                 },
-                new ValidationError
+                new Error
                 {
                     Identifier = "postalCode",
                     ErrorMessage = "PostalCode cannot exceed 10 characters"
@@ -45,14 +45,14 @@ public class ResultVoidToResultOfT
         Assert.Equal(ResultStatus.Invalid, result.Status);
 
         result.Status.Should().Be(ResultStatus.Invalid);
-        result.ValidationErrors.Should().ContainEquivalentOf(new ValidationError { ErrorMessage = "Name is required", Identifier = "name" });
-        result.ValidationErrors.Should().ContainEquivalentOf(new ValidationError { ErrorMessage = "PostalCode cannot exceed 10 characters", Identifier = "postalCode" });
+        result.ValidationErrors.Should().ContainEquivalentOf(new Error { ErrorMessage = "Name is required", Identifier = "name" });
+        result.ValidationErrors.Should().ContainEquivalentOf(new Error { ErrorMessage = "PostalCode cannot exceed 10 characters", Identifier = "postalCode" });
     }
 
     [Fact]
     public void ConvertFromInvalidResultOfUnitWithValidationError()
     {
-        var validationError = new ValidationError
+        var validationError = new Error
         {
             Identifier = "name",
             ErrorMessage = "Name is required"
@@ -64,7 +64,7 @@ public class ResultVoidToResultOfT
         Assert.Equal(ResultStatus.Invalid, result.Status);
 
         result.Status.Should().Be(ResultStatus.Invalid);
-        result.ValidationErrors.Should().ContainEquivalentOf(new ValidationError { ErrorMessage = "Name is required", Identifier = "name" });
+        result.ValidationErrors.Should().ContainEquivalentOf(new Error { ErrorMessage = "Name is required", Identifier = "name" });
     }
 
     [Fact]

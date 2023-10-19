@@ -2,8 +2,10 @@
 {
     public enum ValidationSeverity
     {
-        Error = 0,
-        Warning = 1, 
-        Info = 2
+        Debug = 0,
+        Info = 1,
+        Warning = 2,
+        Error = 3,
+        Critical = 4,
     }
 }
