@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Ardalis.Result.AspNetCore
 {
@@ -61,8 +59,8 @@ namespace Ardalis.Result.AspNetCore
         {
             var actionProps = controller.ControllerContext.ActionDescriptor.Properties;
 
-            var resultStatusMap = actionProps.ContainsKey(ResultConvention.RESULT_STATUS_MAP_PROP) 
-                ?(actionProps[ResultConvention.RESULT_STATUS_MAP_PROP] as ResultStatusMap)
+            var resultStatusMap = actionProps.ContainsKey(ResultConvention.RESULT_STATUS_MAP_PROP)
+                ? (actionProps[ResultConvention.RESULT_STATUS_MAP_PROP] as ResultStatusMap)
                 : new ResultStatusMap().AddDefaultMap();
 
             var resultStatusOptions = resultStatusMap[result.Status];

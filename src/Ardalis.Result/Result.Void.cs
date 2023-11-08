@@ -73,7 +73,7 @@
 
             return new Result()
             {
-                Status = ResultStatus.Error,
+                Status = ResultStatus.BadRequest,
                 ResultError = new ResultError
                 {
                     ErrorMessage = string.Join(" ", errorMessages),
@@ -85,7 +85,7 @@
         {
             return new Result()
             {
-                Status = ResultStatus.Error,
+                Status = ResultStatus.BadRequest,
                 ResultError = new ResultError
                 {
                     ErrorMessage = string.Join(" ", errorMessages),
@@ -98,7 +98,7 @@
         {
             return new Result()
             {
-                Status = ResultStatus.Error,
+                Status = ResultStatus.BadRequest,
                 ResultError = new ResultError
                 {
                     ErrorCode = errorCode,
@@ -176,7 +176,7 @@
         {
             return new Result()
             {
-                Status = ResultStatus.Error,
+                Status = ResultStatus.BadRequest,
                 ResultError = error
             };
         }

@@ -107,7 +107,7 @@ public class Result<T> : IResult
 
         return new Result<T>()
         {
-            Status = ResultStatus.Error,
+            Status = ResultStatus.BadRequest,
             ResultError = new ResultError
             {
                 ErrorMessage = string.Join(" ", errorMessages),
@@ -119,7 +119,7 @@ public class Result<T> : IResult
     {
         return new Result<T>()
         {
-            Status = ResultStatus.Error,
+            Status = ResultStatus.BadRequest,
             ResultError = new ResultError
             {
                 ErrorMessage = string.Join(" ", errorMessages),
@@ -132,7 +132,7 @@ public class Result<T> : IResult
     {
         return new Result<T>()
         {
-            Status = ResultStatus.Error,
+            Status = ResultStatus.BadRequest,
             ResultError = new ResultError
             {
                 ErrorCode = errorCode,
@@ -210,7 +210,7 @@ public class Result<T> : IResult
     {
         return new Result<T>()
         {
-            Status = ResultStatus.Error,
+            Status = ResultStatus.BadRequest,
             ResultError = error
         };
     }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 #if NET7_0_OR_GREATER
 namespace Ardalis.Result.AspNetCore;
@@ -63,6 +63,7 @@ public static partial class ResultExtensions
     private static Microsoft.AspNetCore.Http.IResult NotFoundEntity(IResult result)
     {
         var details = new StringBuilder("Next error(s) occured:");
+        var asd = StatusCodes.Status404NotFound;
 
         if (result.Errors.Any())
         {
@@ -128,7 +129,7 @@ public static partial class ResultExtensions
         if (result.Errors.Any())
         {
             foreach (var error in result.Errors) details.Append("* ").Append(error).AppendLine();
-            
+
             return Results.Problem(new ProblemDetails
             {
                 Title = "Service unavailable.",

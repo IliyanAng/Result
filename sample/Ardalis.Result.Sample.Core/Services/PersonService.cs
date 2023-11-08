@@ -1,13 +1,13 @@
-﻿using Ardalis.Result.Sample.Core.Model;
+﻿using Ardalis.Result.FluentValidation;
+using Ardalis.Result.Sample.Core.Model;
 using Ardalis.Result.Sample.Core.Validators;
-using Ardalis.Result.FluentValidation;
 using System.Linq;
 
 namespace Ardalis.Result.Sample.Core.Services
 {
     public class PersonService
     {
-        private readonly int[] _knownIds = new [] { 1 };
+        private readonly int[] _knownIds = new[] { 1 };
         private readonly Person _existPerson = new() { Forename = "John", Surname = "Smith" };
 
         public Result<Person> Create(string firstName, string lastName)
@@ -23,12 +23,12 @@ namespace Ardalis.Result.Sample.Core.Services
             var result = validator.Validate(person);
             if (!result.IsValid)
             {
-                return Result.Invalid(result.AsErrors());
+                return Result.Error(ResultStatus.BadRequest, result.AsErrors());
             }
 
             if (person.Forename == _existPerson.Forename && person.Surname == _existPerson.Surname)
             {
-                return Result.Conflict($"Person ({person.Forename} {person.Surname}) is exist");
+                return Result.Error(ResultStatus.Conflict, $"Person ({person.Forename} {person.Surname}) is exist");
             }
 
             return Result.Success(person);
